@@ -1,3 +1,62 @@
+```mermaid
+erDiagram
+    USERS ||--o{ BOOKINGS : makes
+    ROOMS ||--o{ BOOKINGS : reserved_for
+    BOOKING_STATUSES ||--o{ BOOKINGS : has
+    BOOKINGS ||--o{ BOOKING_HISTORIES : logs
+    USERS ||--o{ BOOKING_HISTORIES : changes
+    BOOKING_STATUSES ||--o{ BOOKING_HISTORIES : referenced_by
+
+    USERS {
+        int id PK
+        string name
+        string email
+        string role
+        datetime created_at
+        datetime updated_at
+    }
+
+    ROOMS {
+        int id PK
+        string room_code
+        string room_name
+        int capacity
+        string location
+        string room_status
+        datetime created_at
+        datetime updated_at
+    }
+
+    BOOKINGS {
+        int id PK
+        int room_id FK
+        int user_id FK
+        date date
+        time start_time
+        time end_time
+        string purpose
+        int status_booking FK
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+    }
+
+    BOOKING_STATUSES {
+        int id PK
+        string status_booking
+    }
+
+    BOOKING_HISTORIES {
+        int id PK
+        int booking_id FK
+        int old_status FK
+        int new_status FK
+        int changed_by FK
+        datetime changed_at
+        string note
+    }
+```    
+
 ### 1. Users
 Tabel ini menyimpan data pengguna sistem, baik sebagai admin maupun peminjam
 * `id` : Primary key
