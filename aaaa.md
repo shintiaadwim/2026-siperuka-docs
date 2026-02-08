@@ -1,4 +1,4 @@
-```mermaid
+<!-- ```mermaid
 erDiagram
     USERS ||--o{ BOOKINGS : makes
     ROOMS ||--o{ BOOKINGS : reserved_for
@@ -55,7 +55,8 @@ erDiagram
         datetime changed_at
         string note
     }
-```    
+```     -->
+
 
 ### 1. Users
 Tabel ini menyimpan data pengguna sistem, baik sebagai admin maupun peminjam
