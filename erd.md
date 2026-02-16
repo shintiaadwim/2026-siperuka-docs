@@ -1,4 +1,8 @@
-<!-- ```mermaid
+# ERD in Siperuka
+
+## 1. Entity Relationship Diagram (ERD)
+
+```mermaid
 erDiagram
     USERS ||--o{ BOOKINGS : makes
     ROOMS ||--o{ BOOKINGS : reserved_for
@@ -55,8 +59,48 @@ erDiagram
         datetime changed_at
         string note
     }
-```     -->
+```    
+## 3. Flowchart Sistem
 
+```mermaid
+flowchart TD
+    A[User Request Booking] --> B[Booking Created]
+    B --> C[Admin Review]
+    C -->|Approve| D[Booking Approved]
+    C -->|Reject| E[Booking Rejected]
+    D --> F[Room Reserved]
+    E --> G[Booking History Updated]
+    F --> G
+```
+
+---
+
+## 4. Use Case Diagram
+
+```mermaid
+usecaseDiagram
+    actor User
+    actor Admin
+    User --> (Request Booking)
+    User --> (View Booking History)
+    Admin --> (Approve/Reject Booking)
+    Admin --> (Manage Rooms)
+    Admin --> (View All Bookings)
+```
+
+---
+
+## 5. Arsitektur Sistem
+
+### Layered Architecture
+
+- **Presentation Layer**: Frontend (React/Vite)
+- **API Layer**: Backend Controller (ASP.NET Core)
+- **Service Layer**: Business logic (BookingService, RoomService, dsb)
+- **Data Access Layer**: Entity Framework, DbContext
+- **Database Layer**: SQL Server (atau sesuai konfigurasi)
+
+---
 
 ### 1. Users
 Tabel ini menyimpan data pengguna sistem, baik sebagai admin maupun peminjam
